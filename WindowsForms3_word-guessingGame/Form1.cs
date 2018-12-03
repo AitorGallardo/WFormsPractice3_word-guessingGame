@@ -15,6 +15,7 @@ namespace WindowsForms3_word_guessingGame
         // List<String> simpleWords = new List<String>() {"CEC", "CRANC", "DEU", "MES", "FIL", "MEU", "COTXE"};
         // List<String> normalWords = new List<String>() { "LLAPIS", "RATOLI", "GRIPAU", "MOTOS", "CADIRA", "TAULA", "COTXE" };
         // List<String> complexWords = new List<String>() { "GRINYOLAR", "ESQUERDAR", "ESBIAXAR", "AXAFLANAR"};
+        String correctPassword = "ABCD1234";
         public Form1()
         {
             InitializeComponent();
@@ -27,10 +28,26 @@ namespace WindowsForms3_word_guessingGame
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private bool logIn(String password)
         {
-
+            if (this.correctPassword.Equals(password))
+            {
+                configPasswordPanel.Visible = false;
+                configWordPanel.Visible = true;
+                //768; 393
+                configWordPanel.Size = new Size(768, 393);
+                configWordPanel.AutoSize = true;
+                return true;
+            }
+            return false;
         }
 
+        private void passwordTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Return))
+            {
+                logIn(passwordTxtBox.Text);
+            }
+        }
     }
 }
