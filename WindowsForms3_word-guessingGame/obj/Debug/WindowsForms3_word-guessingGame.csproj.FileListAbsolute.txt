@@ -1,0 +1,10 @@
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word-guessingGame.csprojAssemblyReference.cache
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word_guessingGame.Form1.resources
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word_guessingGame.Properties.Resources.resources
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word-guessingGame.csproj.GenerateResource.cache
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word-guessingGame.csproj.CoreCompileInputs.cache
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\bin\Debug\WindowsForms3_word-guessingGame.exe.config
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\bin\Debug\WindowsForms3_word-guessingGame.exe
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\bin\Debug\WindowsForms3_word-guessingGame.pdb
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word-guessingGame.exe
+C:\Users\Aitor\source\repos\WindowsForms3_word-guessingGame\WindowsForms3_word-guessingGame\obj\Debug\WindowsForms3_word-guessingGame.pdb
