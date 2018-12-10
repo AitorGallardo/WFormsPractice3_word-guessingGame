@@ -33,17 +33,17 @@
             this.tabControlGame = new System.Windows.Forms.TabControl();
             this.Configuracio = new System.Windows.Forms.TabPage();
             this.complexesTxtBox = new System.Windows.Forms.TextBox();
-            this.normalsTxtBox = new System.Windows.Forms.TextBox();
-            this.simplesTxtBox = new System.Windows.Forms.TextBox();
             this.ComplexLabel = new System.Windows.Forms.Label();
+            this.normalsTxtBox = new System.Windows.Forms.TextBox();
+            this.complexesListBox = new System.Windows.Forms.ListBox();
+            this.simplesListBox = new System.Windows.Forms.ListBox();
+            this.simplesTxtBox = new System.Windows.Forms.TextBox();
             this.normalLabel = new System.Windows.Forms.Label();
             this.simpleLabel = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.normalsListBox = new System.Windows.Forms.ListBox();
             this.Joc = new System.Windows.Forms.TabPage();
-            this.passwordTxtBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTxtBox = new System.Windows.Forms.TextBox();
             this.tabControlGame.SuspendLayout();
             this.Configuracio.SuspendLayout();
             this.Joc.SuspendLayout();
@@ -90,12 +90,12 @@
             this.Configuracio.Controls.Add(this.complexesTxtBox);
             this.Configuracio.Controls.Add(this.ComplexLabel);
             this.Configuracio.Controls.Add(this.normalsTxtBox);
-            this.Configuracio.Controls.Add(this.listBox3);
-            this.Configuracio.Controls.Add(this.listBox1);
+            this.Configuracio.Controls.Add(this.complexesListBox);
+            this.Configuracio.Controls.Add(this.simplesListBox);
             this.Configuracio.Controls.Add(this.simplesTxtBox);
             this.Configuracio.Controls.Add(this.normalLabel);
             this.Configuracio.Controls.Add(this.simpleLabel);
-            this.Configuracio.Controls.Add(this.listBox2);
+            this.Configuracio.Controls.Add(this.normalsListBox);
             this.Configuracio.Location = new System.Drawing.Point(4, 29);
             this.Configuracio.Name = "Configuracio";
             this.Configuracio.Padding = new System.Windows.Forms.Padding(3);
@@ -110,20 +110,7 @@
             this.complexesTxtBox.Name = "complexesTxtBox";
             this.complexesTxtBox.Size = new System.Drawing.Size(120, 26);
             this.complexesTxtBox.TabIndex = 8;
-            // 
-            // normalsTxtBox
-            // 
-            this.normalsTxtBox.Location = new System.Drawing.Point(295, 174);
-            this.normalsTxtBox.Name = "normalsTxtBox";
-            this.normalsTxtBox.Size = new System.Drawing.Size(120, 26);
-            this.normalsTxtBox.TabIndex = 7;
-            // 
-            // simplesTxtBox
-            // 
-            this.simplesTxtBox.Location = new System.Drawing.Point(43, 174);
-            this.simplesTxtBox.Name = "simplesTxtBox";
-            this.simplesTxtBox.Size = new System.Drawing.Size(120, 26);
-            this.simplesTxtBox.TabIndex = 6;
+            this.complexesTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allInputTxtBox_KeyPress);
             // 
             // ComplexLabel
             // 
@@ -133,6 +120,53 @@
             this.ComplexLabel.Size = new System.Drawing.Size(101, 20);
             this.ComplexLabel.TabIndex = 5;
             this.ComplexLabel.Text = "P.Complexes";
+            // 
+            // normalsTxtBox
+            // 
+            this.normalsTxtBox.Location = new System.Drawing.Point(295, 174);
+            this.normalsTxtBox.Name = "normalsTxtBox";
+            this.normalsTxtBox.Size = new System.Drawing.Size(120, 26);
+            this.normalsTxtBox.TabIndex = 7;
+            this.normalsTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allInputTxtBox_KeyPress);
+            // 
+            // complexesListBox
+            // 
+            this.complexesListBox.FormattingEnabled = true;
+            this.complexesListBox.ItemHeight = 20;
+            this.complexesListBox.Items.AddRange(new object[] {
+            "GRINYOLAR",
+            "ESQUERDAR",
+            "ESBIAXAR",
+            "AXAFLANAR"});
+            this.complexesListBox.Location = new System.Drawing.Point(554, 53);
+            this.complexesListBox.Name = "complexesListBox";
+            this.complexesListBox.Size = new System.Drawing.Size(120, 84);
+            this.complexesListBox.TabIndex = 2;
+            // 
+            // simplesListBox
+            // 
+            this.simplesListBox.FormattingEnabled = true;
+            this.simplesListBox.ItemHeight = 20;
+            this.simplesListBox.Items.AddRange(new object[] {
+            "CEC",
+            "CRANC",
+            "DEU",
+            "MES",
+            "FIL",
+            "MEU",
+            "COTXE"});
+            this.simplesListBox.Location = new System.Drawing.Point(43, 53);
+            this.simplesListBox.Name = "simplesListBox";
+            this.simplesListBox.Size = new System.Drawing.Size(120, 84);
+            this.simplesListBox.TabIndex = 0;
+            // 
+            // simplesTxtBox
+            // 
+            this.simplesTxtBox.Location = new System.Drawing.Point(43, 174);
+            this.simplesTxtBox.Name = "simplesTxtBox";
+            this.simplesTxtBox.Size = new System.Drawing.Size(120, 26);
+            this.simplesTxtBox.TabIndex = 6;
+            this.simplesTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allInputTxtBox_KeyPress);
             // 
             // normalLabel
             // 
@@ -152,11 +186,11 @@
             this.simpleLabel.TabIndex = 3;
             this.simpleLabel.Text = "P.Simples";
             // 
-            // listBox2
+            // normalsListBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Items.AddRange(new object[] {
+            this.normalsListBox.FormattingEnabled = true;
+            this.normalsListBox.ItemHeight = 20;
+            this.normalsListBox.Items.AddRange(new object[] {
             "LLAPIS",
             "RATOLI",
             "GRIPAU",
@@ -164,41 +198,10 @@
             "CADIRA",
             "TAULA",
             "COTXE"});
-            this.listBox2.Location = new System.Drawing.Point(295, 53);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 84);
-            this.listBox2.TabIndex = 1;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 20;
-            this.listBox3.Items.AddRange(new object[] {
-            "GRINYOLAR",
-            "ESQUERDAR",
-            "ESBIAXAR",
-            "AXAFLANAR"});
-            this.listBox3.Location = new System.Drawing.Point(554, 53);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 84);
-            this.listBox3.TabIndex = 2;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Items.AddRange(new object[] {
-            "CEC",
-            "CRANC",
-            "DEU",
-            "MES",
-            "FIL",
-            "MEU",
-            "COTXE"});
-            this.listBox1.Location = new System.Drawing.Point(43, 53);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 0;
+            this.normalsListBox.Location = new System.Drawing.Point(295, 53);
+            this.normalsListBox.Name = "normalsListBox";
+            this.normalsListBox.Size = new System.Drawing.Size(120, 84);
+            this.normalsListBox.TabIndex = 1;
             // 
             // Joc
             // 
@@ -214,15 +217,6 @@
             this.Joc.Text = "Joc";
             this.Joc.UseVisualStyleBackColor = true;
             // 
-            // passwordTxtBox
-            // 
-            this.passwordTxtBox.Location = new System.Drawing.Point(6, 38);
-            this.passwordTxtBox.MaxLength = 10;
-            this.passwordTxtBox.Name = "passwordTxtBox";
-            this.passwordTxtBox.Size = new System.Drawing.Size(100, 26);
-            this.passwordTxtBox.TabIndex = 2;
-            this.passwordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTxtBox_KeyPress);
-            // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
@@ -231,6 +225,15 @@
             this.passwordLabel.Size = new System.Drawing.Size(78, 20);
             this.passwordLabel.TabIndex = 8;
             this.passwordLabel.Text = "Password";
+            // 
+            // passwordTxtBox
+            // 
+            this.passwordTxtBox.Location = new System.Drawing.Point(6, 38);
+            this.passwordTxtBox.MaxLength = 10;
+            this.passwordTxtBox.Name = "passwordTxtBox";
+            this.passwordTxtBox.Size = new System.Drawing.Size(100, 26);
+            this.passwordTxtBox.TabIndex = 2;
+            this.passwordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allInputTxtBox_KeyPress);
             // 
             // Form1
             // 
@@ -255,9 +258,9 @@
         private System.Windows.Forms.Button startGame;
         private System.Windows.Forms.TabControl tabControlGame;
         private System.Windows.Forms.TabPage Configuracio;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox normalsListBox;
+        private System.Windows.Forms.ListBox complexesListBox;
+        private System.Windows.Forms.ListBox simplesListBox;
         private System.Windows.Forms.TabPage Joc;
         private System.Windows.Forms.Label ComplexLabel;
         private System.Windows.Forms.Label normalLabel;
