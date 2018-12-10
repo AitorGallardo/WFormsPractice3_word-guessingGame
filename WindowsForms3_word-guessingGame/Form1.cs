@@ -19,6 +19,7 @@ namespace WindowsForms3_word_guessingGame
         public Form1()
         {
             InitializeComponent();
+            tabControlGame.TabPages.Remove(Configuracio);
         }
 
         private void startGame_Click(object sender, EventArgs e)
@@ -32,11 +33,13 @@ namespace WindowsForms3_word_guessingGame
         {
             if (this.correctPassword.Equals(password))
             {
-                configPasswordPanel.Visible = false;
-                configWordPanel.Visible = true;
+                tabControlGame.TabPages.Add(Configuracio);
+                tabControlGame.SelectedTab = Configuracio;
+                // configPasswordPanel.Visible = false;
+                // configWordPanel.Visible = true;
                 //768; 393
-                configWordPanel.Size = new Size(768, 393);
-                configWordPanel.AutoSize = true;
+                // configWordPanel.Size = new Size(768, 393);
+                // configWordPanel.AutoSize = true;
                 return true;
             }
             return false;
@@ -48,6 +51,15 @@ namespace WindowsForms3_word_guessingGame
             {
                 logIn(passwordTxtBox.Text);
             }
+        }
+
+        private void tabControlGame_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlGame.SelectedTab != Configuracio)
+            {
+                tabControlGame.TabPages.Remove(Configuracio);
+            }
+
         }
     }
 }
