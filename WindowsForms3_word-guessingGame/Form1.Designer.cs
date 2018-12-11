@@ -44,9 +44,13 @@
             this.Joc = new System.Windows.Forms.TabPage();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTxtBox = new System.Windows.Forms.TextBox();
+            this.wordToSolve = new System.Windows.Forms.Label();
+            this.userInputTxtBox = new System.Windows.Forms.TextBox();
+            this.hangPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControlGame.SuspendLayout();
             this.Configuracio.SuspendLayout();
             this.Joc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hangPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // word_types
@@ -68,7 +72,7 @@
             this.startGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.startGame.Location = new System.Drawing.Point(591, 27);
             this.startGame.Name = "startGame";
-            this.startGame.Size = new System.Drawing.Size(75, 26);
+            this.startGame.Size = new System.Drawing.Size(75, 37);
             this.startGame.TabIndex = 1;
             this.startGame.Text = "Start";
             this.startGame.UseVisualStyleBackColor = true;
@@ -205,6 +209,9 @@
             // 
             // Joc
             // 
+            this.Joc.Controls.Add(this.hangPictureBox);
+            this.Joc.Controls.Add(this.userInputTxtBox);
+            this.Joc.Controls.Add(this.wordToSolve);
             this.Joc.Controls.Add(this.passwordLabel);
             this.Joc.Controls.Add(this.passwordTxtBox);
             this.Joc.Controls.Add(this.word_types);
@@ -235,6 +242,31 @@
             this.passwordTxtBox.TabIndex = 2;
             this.passwordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allInputTxtBox_KeyPress);
             // 
+            // wordToSolve
+            // 
+            this.wordToSolve.AutoSize = true;
+            this.wordToSolve.Enabled = false;
+            this.wordToSolve.Location = new System.Drawing.Point(261, 209);
+            this.wordToSolve.Name = "wordToSolve";
+            this.wordToSolve.Size = new System.Drawing.Size(100, 20);
+            this.wordToSolve.TabIndex = 9;
+            this.wordToSolve.Text = "wordToSolve";
+            // 
+            // userInputTxtBox
+            // 
+            this.userInputTxtBox.Location = new System.Drawing.Point(265, 256);
+            this.userInputTxtBox.Name = "userInputTxtBox";
+            this.userInputTxtBox.Size = new System.Drawing.Size(100, 26);
+            this.userInputTxtBox.TabIndex = 10;
+            // 
+            // hangPictureBox
+            // 
+            this.hangPictureBox.Location = new System.Drawing.Point(265, 99);
+            this.hangPictureBox.Name = "hangPictureBox";
+            this.hangPictureBox.Size = new System.Drawing.Size(100, 50);
+            this.hangPictureBox.TabIndex = 11;
+            this.hangPictureBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -248,6 +280,7 @@
             this.Configuracio.PerformLayout();
             this.Joc.ResumeLayout(false);
             this.Joc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hangPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,6 +303,9 @@
         private System.Windows.Forms.TextBox simplesTxtBox;
         private System.Windows.Forms.TextBox passwordTxtBox;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label wordToSolve;
+        private System.Windows.Forms.TextBox userInputTxtBox;
+        private System.Windows.Forms.PictureBox hangPictureBox;
     }
 }
 

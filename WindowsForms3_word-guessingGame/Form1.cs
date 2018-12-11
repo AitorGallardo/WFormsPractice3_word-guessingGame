@@ -24,14 +24,53 @@ namespace WindowsForms3_word_guessingGame
         {
             InitializeComponent();
             tabControlGame.TabPages.Remove(Configuracio);
+            wordToSolve.Text = "";
+            wordToSolve.Visible = false;
         }
-
+        // GAME
         private void startGame_Click(object sender, EventArgs e)
         {
             if (word_types.SelectedItem != null)
             {
+            int index = word_types.Items.IndexOf(word_types.SelectedItem);
+                initGame(index);
             }
         }
+
+        private void initGame(int listNumber)
+        {
+            
+            Random rand = new Random();
+            int maxRandom;
+            String randomWord;
+            int wordToSolveLenght;
+            
+
+            switch (listNumber)
+            {
+                case 0:
+                    maxRandom = simplesListBox.Items.Count;
+                    randomWord = simplesListBox.Items[rand.Next(1, maxRandom)].ToString();
+                    wordToSolveLenght = randomWord.Length;
+                    for (int i=0; i < wordToSolveLenght; i++)
+                    {
+                        wordToSolve.Text += " _ ";
+                    }
+                    wordToSolve.Visible = true;
+                    break;
+                case 1:
+                    maxRandom = normalsListBox.Items.Count;
+                    rand.Next(1, maxRandom);
+                    break;
+                case 2:
+                    maxRandom = complexesListBox.Items.Count;
+                    rand.Next(1, maxRandom);
+                    break;
+            }
+        }
+
+
+
         // CONFIG
         private bool logIn(String password)
         {
@@ -101,6 +140,9 @@ namespace WindowsForms3_word_guessingGame
                                             "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 7 a 15 caràcters");
                             txtBx.Clear();
                         }
+                        break;
+                    case "userInputTxtBox":
+                        // metodo cuando entra input
                         break;
                 }              
             }
