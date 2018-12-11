@@ -17,6 +17,7 @@ namespace WindowsForms3_word_guessingGame
         // List<String> normalWords = new List<String>() { "LLAPIS", "RATOLI", "GRIPAU", "MOTOS", "CADIRA", "TAULA", "COTXE" };
         // List<String> complexWords = new List<String>() { "GRINYOLAR", "ESQUERDAR", "ESBIAXAR", "AXAFLANAR"};
         String correctPassword = "ABCD1234";
+        Regex regexGameInput = new Regex("^[A-Z]{1}$");
         Regex regexSimple = new Regex("^[A-Z]{1,5}$");
         Regex regexNormal = new Regex("^[A-Z]{6,9}$");
         Regex regexComplex = new Regex("^[A-Z]{7,15}$");
@@ -30,9 +31,9 @@ namespace WindowsForms3_word_guessingGame
         // GAME
         private void startGame_Click(object sender, EventArgs e)
         {
-            if (word_types.SelectedItem != null)
+            if (word_types_game.SelectedItem != null)
             {
-            int index = word_types.Items.IndexOf(word_types.SelectedItem);
+            int index = word_types_game.Items.IndexOf(word_types_game.SelectedItem);
                 initGame(index);
             }
         }
@@ -46,7 +47,7 @@ namespace WindowsForms3_word_guessingGame
             int wordToSolveLenght;
             
 
-            switch (listNumber)
+            switch (listNumber) // falta acabr
             {
                 case 0:
                     maxRandom = simplesListBox.Items.Count;
@@ -87,11 +88,69 @@ namespace WindowsForms3_word_guessingGame
             }
             return false;
         }
-
-        private void allInputTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void addNewWord(TextBox textbox)
+        {
+            int wordTypeIndex = word_types_config.Items.IndexOf(word_types_config.SelectedItem);
+            switch (wordTypeIndex)
+            {
+                case 0:
+                    if (regexSimple.IsMatch(textbox.Text))
+                    {
+                        simplesListBox.Items.Add(textbox.Text);
+                        MessageBox.Show("La paraula s'ha afegit correctament!");
+                        textbox.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
+                                        "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 1 a 5 caràcters");
+                        textbox.Clear();
+                    }
+                    break;
+                case 1:
+                    if (regexNormal.IsMatch(textbox.Text))
+                    {
+                        normalsListBox.Items.Add(textbox.Text);
+                        MessageBox.Show("La paraula s'ha afegit correctament!");
+                        textbox.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
+                                        "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 6 a 9 caràcters");
+                        textbox.Clear();
+                    }
+                    break;
+                case 2:
+                    if (regexComplex.IsMatch(textbox.Text))
+                    {
+                        complexesListBox.Items.Add(textbox.Text);
+                        MessageBox.Show("La paraula s'ha afegit correctament!");
+                        textbox.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
+                                        "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 7 a 15 caràcters");
+                        textbox.Clear();
+                    }
+                    break;
+            }
+        }
+        private void allTxtBoxInputs_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox txtBx = (TextBox)sender;
-            if(e.KeyChar == Convert.ToChar(Keys.Return))
+            bool pressedEnter = e.KeyChar == Convert.ToChar(Keys.Return);
+
+            if (txtBx.Name.Equals("userInputTxtBox"))
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) // allows only words
+                {
+                    e.Handled = true;
+                }
+
+            }
+            else if(pressedEnter)
             {
                 switch (txtBx.Name)
                 {
@@ -99,50 +158,8 @@ namespace WindowsForms3_word_guessingGame
                         logIn(passwordTxtBox.Text);
                         txtBx.Clear();
                         break;
-                    case "simplesTxtBox":
-                        if (regexSimple.IsMatch(txtBx.Text))
-                        {
-                            simplesListBox.Items.Add(txtBx.Text);
-                            MessageBox.Show("La paraula s'ha afegit correctament!");
-                            txtBx.Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
-                                            "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 1 a 5 caràcters");
-                            txtBx.Clear();
-                        }
-                        break;
-                    case "normalsTxtBox":
-                        if (regexNormal.IsMatch(txtBx.Text))
-                        {
-                            normalsListBox.Items.Add(txtBx.Text);
-                            MessageBox.Show("La paraula s'ha afegit correctament!");
-                            txtBx.Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
-                                            "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 6 a 9 caràcters");
-                            txtBx.Clear();
-                        }
-                        break;
-                    case "complexesTxtBox":
-                        if (regexNormal.IsMatch(txtBx.Text))
-                        {
-                            complexesListBox.Items.Add(txtBx.Text);
-                            MessageBox.Show("La paraula s'ha afegit correctament!");
-                            txtBx.Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Paraula incorrecte. Les normes per introduir una paraula del tipus simple són: " +
-                                            "\n\n# Nomès caràcters en majúscula\n# Sense accents\n# Paraules de 7 a 15 caràcters");
-                            txtBx.Clear();
-                        }
-                        break;
-                    case "userInputTxtBox":
-                        // metodo cuando entra input
+                    case "newWordTxtBox":
+                        addNewWord(txtBx);
                         break;
                 }              
             }
@@ -156,5 +173,6 @@ namespace WindowsForms3_word_guessingGame
                 tabControlGame.TabPages.Remove(Configuracio);
             }
         }
+
     }
 }
