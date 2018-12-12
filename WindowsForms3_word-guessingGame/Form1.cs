@@ -17,7 +17,7 @@ namespace WindowsForms3_word_guessingGame
         // List<String> normalWords = new List<String>() { "LLAPIS", "RATOLI", "GRIPAU", "MOTOS", "CADIRA", "TAULA", "COTXE" };
         // List<String> complexWords = new List<String>() { "GRINYOLAR", "ESQUERDAR", "ESBIAXAR", "AXAFLANAR"};
         String correctPassword = "ABCD1234";
-        Regex regexGameInput = new Regex("^[A-Z]{1}$");
+        Regex regexGameInput = new Regex("^[A-Za-z]{1}$");
         Regex regexSimple = new Regex("^[A-Z]{1,5}$");
         Regex regexNormal = new Regex("^[A-Z]{6,9}$");
         Regex regexComplex = new Regex("^[A-Z]{7,15}$");
@@ -73,9 +73,8 @@ namespace WindowsForms3_word_guessingGame
 
         private void checkAndReplaceWord(String inputCharacter)
         {
-            char charToReplace = inputCharacter[0];
             char[] copyOfWordToSolve = wordToSolve.Text.ToCharArray();
-            // List<int> indexes = foundedIndexes(charToReplace);
+            char charToReplace = inputCharacter[0];
             int index = 0;
 
             if (randomWordToSolve.Contains(charToReplace))
@@ -86,26 +85,14 @@ namespace WindowsForms3_word_guessingGame
                     copyOfWordToSolve[index] = charToReplace;
                     wordToSolve.Text = new string(copyOfWordToSolve);
                     index = randomWordToSolve.IndexOf(charToReplace, index + 1);
-                } 
+                }
+                correctCharactersListBox_game.Items.Add(charToReplace+", ");
+            }
+            else
+            {
+                wrongCharactersListBox_game.Items.Add(charToReplace + ", ");
             }
         }
-
-        //private List<int> foundedIndexes(char charToSearch)
-        //{
-        //    List<int> foundIndex = new List<int>();
-        //    int i = 0;
-
-        //    i = randomWordToSolve.IndexOf(charToSearch, i);
-
-        //    while (i != -1)
-        //    {
-        //        foundIndex.Add(i);
-        //        i = randomWordToSolve.IndexOf(charToSearch, i+1);
-        //    }
-        //    return foundIndex;
-        //}
-
-
 
         // CONFIG
         private bool logIn(String password)
@@ -185,7 +172,7 @@ namespace WindowsForms3_word_guessingGame
 
                 } else
                 {
-                    txtBx.Text = e.KeyChar.ToString();
+                    txtBx.Text = e.KeyChar.ToString().ToUpper();
                     // MessageBox.Show(txtBx.Text);
                     checkAndReplaceWord(txtBx.Text);
                     txtBx.Clear();
