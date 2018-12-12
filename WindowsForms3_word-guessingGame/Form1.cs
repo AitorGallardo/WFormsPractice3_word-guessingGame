@@ -21,6 +21,7 @@ namespace WindowsForms3_word_guessingGame
         Regex regexSimple = new Regex("^[A-Z]{1,5}$");
         Regex regexNormal = new Regex("^[A-Z]{6,9}$");
         Regex regexComplex = new Regex("^[A-Z]{7,15}$");
+        String randomWordToSolve = "";
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +44,6 @@ namespace WindowsForms3_word_guessingGame
             
             Random rand = new Random();
             int maxRandom;
-            String randomWord;
             int wordToSolveLenght;
             
 
@@ -51,11 +51,11 @@ namespace WindowsForms3_word_guessingGame
             {
                 case 0:
                     maxRandom = simplesListBox.Items.Count;
-                    randomWord = simplesListBox.Items[rand.Next(1, maxRandom)].ToString();
-                    wordToSolveLenght = randomWord.Length;
+                    randomWordToSolve = simplesListBox.Items[rand.Next(1, maxRandom)].ToString();
+                    wordToSolveLenght = randomWordToSolve.Length;
                     for (int i=0; i < wordToSolveLenght; i++)
                     {
-                        wordToSolve.Text += " _ ";
+                        wordToSolve.Text += "#";
                     }
                     wordToSolve.Visible = true;
                     break;
@@ -68,7 +68,42 @@ namespace WindowsForms3_word_guessingGame
                     rand.Next(1, maxRandom);
                     break;
             }
+            
         }
+
+        private void checkAndReplaceWord(String inputCharacter)
+        {
+            char charToReplace = inputCharacter[0];
+            char[] copyOfWordToSolve = wordToSolve.Text.ToCharArray();
+            // List<int> indexes = foundedIndexes(charToReplace);
+            int index = 0;
+
+            if (randomWordToSolve.Contains(charToReplace))
+            {
+                index = randomWordToSolve.IndexOf(charToReplace, index);
+                while (index != -1)
+                {
+                    copyOfWordToSolve[index] = charToReplace;
+                    wordToSolve.Text = new string(copyOfWordToSolve);
+                    index = randomWordToSolve.IndexOf(charToReplace, index + 1);
+                } 
+            }
+        }
+
+        //private List<int> foundedIndexes(char charToSearch)
+        //{
+        //    List<int> foundIndex = new List<int>();
+        //    int i = 0;
+
+        //    i = randomWordToSolve.IndexOf(charToSearch, i);
+
+        //    while (i != -1)
+        //    {
+        //        foundIndex.Add(i);
+        //        i = randomWordToSolve.IndexOf(charToSearch, i+1);
+        //    }
+        //    return foundIndex;
+        //}
 
 
 
@@ -144,9 +179,16 @@ namespace WindowsForms3_word_guessingGame
 
             if (txtBx.Name.Equals("userInputTxtBox"))
             {
-                if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) // allows only words
+                if (!regexGameInput.IsMatch(e.KeyChar.ToString())) // allows only words
                 {
                     e.Handled = true;
+
+                } else
+                {
+                    txtBx.Text = e.KeyChar.ToString();
+                    // MessageBox.Show(txtBx.Text);
+                    checkAndReplaceWord(txtBx.Text);
+                    txtBx.Clear();
                 }
 
             }

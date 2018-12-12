@@ -61,19 +61,17 @@
             "Simples",
             "Normals",
             "Complexes"});
-            this.word_types_game.Location = new System.Drawing.Point(298, 16);
-            this.word_types_game.Margin = new System.Windows.Forms.Padding(2);
+            this.word_types_game.Location = new System.Drawing.Point(447, 25);
             this.word_types_game.Name = "word_types_game";
-            this.word_types_game.Size = new System.Drawing.Size(82, 21);
+            this.word_types_game.Size = new System.Drawing.Size(121, 28);
             this.word_types_game.TabIndex = 0;
             // 
             // startGame
             // 
             this.startGame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.startGame.Location = new System.Drawing.Point(394, 18);
-            this.startGame.Margin = new System.Windows.Forms.Padding(2);
+            this.startGame.Location = new System.Drawing.Point(591, 28);
             this.startGame.Name = "startGame";
-            this.startGame.Size = new System.Drawing.Size(50, 24);
+            this.startGame.Size = new System.Drawing.Size(75, 37);
             this.startGame.TabIndex = 1;
             this.startGame.Text = "Start";
             this.startGame.UseVisualStyleBackColor = true;
@@ -83,11 +81,10 @@
             // 
             this.tabControlGame.Controls.Add(this.Configuracio);
             this.tabControlGame.Controls.Add(this.Joc);
-            this.tabControlGame.Location = new System.Drawing.Point(8, 8);
-            this.tabControlGame.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControlGame.Location = new System.Drawing.Point(12, 12);
             this.tabControlGame.Name = "tabControlGame";
             this.tabControlGame.SelectedIndex = 0;
-            this.tabControlGame.Size = new System.Drawing.Size(517, 277);
+            this.tabControlGame.Size = new System.Drawing.Size(776, 426);
             this.tabControlGame.TabIndex = 3;
             this.tabControlGame.SelectedIndexChanged += new System.EventHandler(this.tabControlGame_SelectedIndexChanged);
             // 
@@ -101,11 +98,10 @@
             this.Configuracio.Controls.Add(this.normalLabel);
             this.Configuracio.Controls.Add(this.simpleLabel);
             this.Configuracio.Controls.Add(this.normalsListBox);
-            this.Configuracio.Location = new System.Drawing.Point(4, 22);
-            this.Configuracio.Margin = new System.Windows.Forms.Padding(2);
+            this.Configuracio.Location = new System.Drawing.Point(4, 29);
             this.Configuracio.Name = "Configuracio";
-            this.Configuracio.Padding = new System.Windows.Forms.Padding(2);
-            this.Configuracio.Size = new System.Drawing.Size(509, 251);
+            this.Configuracio.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Configuracio.Size = new System.Drawing.Size(768, 393);
             this.Configuracio.TabIndex = 0;
             this.Configuracio.Text = "Configuració";
             this.Configuracio.UseVisualStyleBackColor = true;
@@ -119,48 +115,46 @@
             "Simples",
             "Normals",
             "Complexes"});
-            this.word_types_config.Location = new System.Drawing.Point(305, 186);
-            this.word_types_config.Margin = new System.Windows.Forms.Padding(2);
+            this.word_types_config.Location = new System.Drawing.Point(458, 286);
             this.word_types_config.Name = "word_types_config";
-            this.word_types_config.Size = new System.Drawing.Size(82, 21);
+            this.word_types_config.Size = new System.Drawing.Size(121, 28);
             this.word_types_config.TabIndex = 8;
             // 
             // ComplexLabel
             // 
             this.ComplexLabel.AutoSize = true;
-            this.ComplexLabel.Location = new System.Drawing.Point(366, 19);
-            this.ComplexLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ComplexLabel.Location = new System.Drawing.Point(549, 29);
             this.ComplexLabel.Name = "ComplexLabel";
-            this.ComplexLabel.Size = new System.Drawing.Size(68, 13);
+            this.ComplexLabel.Size = new System.Drawing.Size(101, 20);
             this.ComplexLabel.TabIndex = 5;
             this.ComplexLabel.Text = "P.Complexes";
             // 
             // newWordTxtBox
             // 
-            this.newWordTxtBox.Location = new System.Drawing.Point(159, 186);
-            this.newWordTxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.newWordTxtBox.Location = new System.Drawing.Point(238, 286);
             this.newWordTxtBox.Name = "newWordTxtBox";
-            this.newWordTxtBox.Size = new System.Drawing.Size(119, 20);
+            this.newWordTxtBox.Size = new System.Drawing.Size(176, 26);
             this.newWordTxtBox.TabIndex = 7;
             this.newWordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTxtBoxInputs_KeyPress);
             // 
             // complexesListBox
             // 
             this.complexesListBox.FormattingEnabled = true;
+            this.complexesListBox.ItemHeight = 20;
             this.complexesListBox.Items.AddRange(new object[] {
             "GRINYOLAR",
             "ESQUERDAR",
             "ESBIAXAR",
             "AXAFLANAR"});
-            this.complexesListBox.Location = new System.Drawing.Point(369, 48);
-            this.complexesListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.complexesListBox.Location = new System.Drawing.Point(554, 74);
             this.complexesListBox.Name = "complexesListBox";
-            this.complexesListBox.Size = new System.Drawing.Size(81, 95);
+            this.complexesListBox.Size = new System.Drawing.Size(120, 144);
             this.complexesListBox.TabIndex = 2;
             // 
             // simplesListBox
             // 
             this.simplesListBox.FormattingEnabled = true;
+            this.simplesListBox.ItemHeight = 20;
             this.simplesListBox.Items.AddRange(new object[] {
             "CEC",
             "CRANC",
@@ -169,35 +163,33 @@
             "FIL",
             "MEU",
             "COTXE"});
-            this.simplesListBox.Location = new System.Drawing.Point(29, 48);
-            this.simplesListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.simplesListBox.Location = new System.Drawing.Point(44, 74);
             this.simplesListBox.Name = "simplesListBox";
-            this.simplesListBox.Size = new System.Drawing.Size(81, 95);
+            this.simplesListBox.Size = new System.Drawing.Size(120, 144);
             this.simplesListBox.TabIndex = 0;
             // 
             // normalLabel
             // 
             this.normalLabel.AutoSize = true;
-            this.normalLabel.Location = new System.Drawing.Point(194, 19);
-            this.normalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.normalLabel.Location = new System.Drawing.Point(291, 29);
             this.normalLabel.Name = "normalLabel";
-            this.normalLabel.Size = new System.Drawing.Size(55, 13);
+            this.normalLabel.Size = new System.Drawing.Size(81, 20);
             this.normalLabel.TabIndex = 4;
             this.normalLabel.Text = "P.Normals";
             // 
             // simpleLabel
             // 
             this.simpleLabel.AutoSize = true;
-            this.simpleLabel.Location = new System.Drawing.Point(26, 19);
-            this.simpleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.simpleLabel.Location = new System.Drawing.Point(39, 29);
             this.simpleLabel.Name = "simpleLabel";
-            this.simpleLabel.Size = new System.Drawing.Size(53, 13);
+            this.simpleLabel.Size = new System.Drawing.Size(79, 20);
             this.simpleLabel.TabIndex = 3;
             this.simpleLabel.Text = "P.Simples";
             // 
             // normalsListBox
             // 
             this.normalsListBox.FormattingEnabled = true;
+            this.normalsListBox.ItemHeight = 20;
             this.normalsListBox.Items.AddRange(new object[] {
             "LLAPIS",
             "RATOLI",
@@ -206,10 +198,9 @@
             "CADIRA",
             "TAULA",
             "COTXE"});
-            this.normalsListBox.Location = new System.Drawing.Point(197, 48);
-            this.normalsListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.normalsListBox.Location = new System.Drawing.Point(296, 74);
             this.normalsListBox.Name = "normalsListBox";
-            this.normalsListBox.Size = new System.Drawing.Size(81, 95);
+            this.normalsListBox.Size = new System.Drawing.Size(120, 144);
             this.normalsListBox.TabIndex = 1;
             // 
             // Joc
@@ -221,31 +212,29 @@
             this.Joc.Controls.Add(this.passwordTxtBox);
             this.Joc.Controls.Add(this.word_types_game);
             this.Joc.Controls.Add(this.startGame);
-            this.Joc.Location = new System.Drawing.Point(4, 22);
-            this.Joc.Margin = new System.Windows.Forms.Padding(2);
+            this.Joc.Location = new System.Drawing.Point(4, 29);
             this.Joc.Name = "Joc";
-            this.Joc.Padding = new System.Windows.Forms.Padding(2);
-            this.Joc.Size = new System.Drawing.Size(509, 251);
+            this.Joc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Joc.Size = new System.Drawing.Size(768, 393);
             this.Joc.TabIndex = 1;
             this.Joc.Text = "Joc";
             this.Joc.UseVisualStyleBackColor = true;
             // 
             // hangPictureBox
             // 
-            this.hangPictureBox.Location = new System.Drawing.Point(177, 64);
-            this.hangPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.hangPictureBox.Location = new System.Drawing.Point(266, 98);
             this.hangPictureBox.Name = "hangPictureBox";
-            this.hangPictureBox.Size = new System.Drawing.Size(67, 32);
+            this.hangPictureBox.Size = new System.Drawing.Size(100, 49);
             this.hangPictureBox.TabIndex = 11;
             this.hangPictureBox.TabStop = false;
             // 
             // userInputTxtBox
             // 
-            this.userInputTxtBox.Location = new System.Drawing.Point(177, 166);
-            this.userInputTxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.userInputTxtBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.userInputTxtBox.Location = new System.Drawing.Point(266, 255);
             this.userInputTxtBox.MaxLength = 1;
             this.userInputTxtBox.Name = "userInputTxtBox";
-            this.userInputTxtBox.Size = new System.Drawing.Size(68, 20);
+            this.userInputTxtBox.Size = new System.Drawing.Size(100, 26);
             this.userInputTxtBox.TabIndex = 10;
             this.userInputTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTxtBoxInputs_KeyPress);
             // 
@@ -253,40 +242,36 @@
             // 
             this.wordToSolve.AutoSize = true;
             this.wordToSolve.Enabled = false;
-            this.wordToSolve.Location = new System.Drawing.Point(174, 136);
-            this.wordToSolve.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.wordToSolve.Location = new System.Drawing.Point(261, 209);
             this.wordToSolve.Name = "wordToSolve";
-            this.wordToSolve.Size = new System.Drawing.Size(70, 13);
+            this.wordToSolve.Size = new System.Drawing.Size(100, 20);
             this.wordToSolve.TabIndex = 9;
             this.wordToSolve.Text = "wordToSolve";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(11, 10);
-            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.passwordLabel.Location = new System.Drawing.Point(16, 15);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(53, 13);
+            this.passwordLabel.Size = new System.Drawing.Size(78, 20);
             this.passwordLabel.TabIndex = 8;
             this.passwordLabel.Text = "Password";
             // 
             // passwordTxtBox
             // 
-            this.passwordTxtBox.Location = new System.Drawing.Point(4, 25);
-            this.passwordTxtBox.Margin = new System.Windows.Forms.Padding(2);
+            this.passwordTxtBox.Location = new System.Drawing.Point(6, 38);
             this.passwordTxtBox.MaxLength = 10;
             this.passwordTxtBox.Name = "passwordTxtBox";
-            this.passwordTxtBox.Size = new System.Drawing.Size(68, 20);
+            this.passwordTxtBox.Size = new System.Drawing.Size(100, 26);
             this.passwordTxtBox.TabIndex = 2;
             this.passwordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTxtBoxInputs_KeyPress);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.tabControlGame);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControlGame.ResumeLayout(false);
