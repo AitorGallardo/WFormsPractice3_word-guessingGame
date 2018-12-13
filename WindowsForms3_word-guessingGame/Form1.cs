@@ -17,36 +17,44 @@ namespace WindowsForms3_word_guessingGame
         // List<String> normalWords = new List<String>() { "LLAPIS", "RATOLI", "GRIPAU", "MOTOS", "CADIRA", "TAULA", "COTXE" };
         // List<String> complexWords = new List<String>() { "GRINYOLAR", "ESQUERDAR", "ESBIAXAR", "AXAFLANAR"};
         String correctPassword = "ABCD1234";
+        // Regex
         Regex regexGameInput = new Regex("^[A-Za-z]{1}$");
         Regex regexSimple = new Regex("^[A-Z]{1,5}$");
         Regex regexNormal = new Regex("^[A-Z]{6,9}$");
         Regex regexComplex = new Regex("^[A-Z]{7,15}$");
+        // Resources to manage game inputs
         String randomWordToSolve = "";
         List<char> introducedCharacters = new List<char>();
+        //timer
+        Timer countDownTimer;
+        int counter = 0;
+
         public Form1()
         {
             InitializeComponent();
             tabControlGame.TabPages.Remove(Configuracio);
             wordToSolve.Text = "";
             wordToSolve.Visible = false;
+            countDownTimer = new System.Windows.Forms.Timer();
         }
         // GAME
         private void startGame_Click(object sender, EventArgs e)
         {
             if (word_types_game.SelectedItem != null)
             {
-            int index = word_types_game.Items.IndexOf(word_types_game.SelectedItem);
+                int index = word_types_game.Items.IndexOf(word_types_game.SelectedItem);
                 initGame(index);
+                countDown();
             }
         }
 
         private void initGame(int listNumber)
         {
-            
+
             Random rand = new Random();
             int maxRandom;
             int wordToSolveLenght;
-            
+
 
             switch (listNumber) // falta acabr
             {
@@ -54,7 +62,7 @@ namespace WindowsForms3_word_guessingGame
                     maxRandom = simplesListBox.Items.Count;
                     randomWordToSolve = simplesListBox.Items[rand.Next(1, maxRandom)].ToString();
                     wordToSolveLenght = randomWordToSolve.Length;
-                    for (int i=0; i < wordToSolveLenght; i++)
+                    for (int i = 0; i < wordToSolveLenght; i++)
                     {
                         wordToSolve.Text += "#";
                     }
@@ -69,7 +77,7 @@ namespace WindowsForms3_word_guessingGame
                     rand.Next(1, maxRandom);
                     break;
             }
-            
+
         }
 
         private void checkAndReplaceWord(String inputCharacter) // repartir en mas metodos?
@@ -100,6 +108,24 @@ namespace WindowsForms3_word_guessingGame
             else
             {
                 MessageBox.Show("Ja has introduit aquesta lletra!");
+            }
+        }
+
+        private void countDown()
+        {
+            countDownTimer.Interval = 1000;
+            countDownTimer.Tick += new EventHandler(timer_Tick);
+            this.counter = 0;
+            countDownTimer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            counter++;
+            MessageBox.Show("contador"+ counter);
+            if (counter == 8)
+            {
+                countDownTimer.Stop();
             }
         }
 
@@ -182,7 +208,6 @@ namespace WindowsForms3_word_guessingGame
                 } else
                 {
                     txtBx.Text = e.KeyChar.ToString().ToUpper();
-                    // MessageBox.Show(txtBx.Text);
                     checkAndReplaceWord(txtBx.Text);
                     txtBx.Clear();
                 }
