@@ -44,7 +44,7 @@ namespace WindowsForms3_word_guessingGame
             {
                 int index = word_types_game.Items.IndexOf(word_types_game.SelectedItem);
                 initGame(index);
-                countDown();
+                setCountDown();
             }
         }
 
@@ -111,23 +111,26 @@ namespace WindowsForms3_word_guessingGame
             }
         }
 
-        private void countDown()
+        private void setCountDown()
         {
-            Task.Delay((1000)=>);
             countDownTimer.Interval = 1000;
-            countDownTimer.Tick += new EventHandler(timer_Tick);
+            countDownTimer.Tick += new EventHandler(checkCountDownEverySecond);
             this.counter = 0;
             countDownTimer.Start();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void checkCountDownEverySecond(object sender, EventArgs e)
         {
-            counter++;
-            MessageBox.Show("contador"+ counter);
-            if (counter == 8)
+            System.Diagnostics.Debug.WriteLine(counter);
+
+            if (counter.Equals(8))
             {
                 countDownTimer.Stop();
+                System.Diagnostics.Debug.WriteLine("finished countdown");
+                MessageBox.Show("T'has quedat sense temps. +1 ERROR"); // poner contador de errores
             }
+
+            counter++;
         }
 
         // CONFIG
