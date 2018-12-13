@@ -113,6 +113,7 @@ namespace WindowsForms3_word_guessingGame
 
         private void countDown()
         {
+            Task.Delay((1000)=>);
             countDownTimer.Interval = 1000;
             countDownTimer.Tick += new EventHandler(timer_Tick);
             this.counter = 0;
