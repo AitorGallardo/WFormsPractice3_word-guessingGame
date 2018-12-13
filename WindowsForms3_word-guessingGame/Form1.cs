@@ -22,6 +22,7 @@ namespace WindowsForms3_word_guessingGame
         Regex regexNormal = new Regex("^[A-Z]{6,9}$");
         Regex regexComplex = new Regex("^[A-Z]{7,15}$");
         String randomWordToSolve = "";
+        List<char> introducedCharacters = new List<char>();
         public Form1()
         {
             InitializeComponent();
@@ -71,26 +72,34 @@ namespace WindowsForms3_word_guessingGame
             
         }
 
-        private void checkAndReplaceWord(String inputCharacter)
+        private void checkAndReplaceWord(String inputCharacter) // repartir en mas metodos?
         {
             char[] copyOfWordToSolve = wordToSolve.Text.ToCharArray();
             char charToReplace = inputCharacter[0];
             int index = 0;
-
-            if (randomWordToSolve.Contains(charToReplace))
+            if (!introducedCharacters.Contains(charToReplace))
             {
-                index = randomWordToSolve.IndexOf(charToReplace, index);
-                while (index != -1)
+                if (randomWordToSolve.Contains(charToReplace))
                 {
-                    copyOfWordToSolve[index] = charToReplace;
-                    wordToSolve.Text = new string(copyOfWordToSolve);
-                    index = randomWordToSolve.IndexOf(charToReplace, index + 1);
+                    index = randomWordToSolve.IndexOf(charToReplace, index);
+                    while (index != -1)
+                    {
+                        copyOfWordToSolve[index] = charToReplace;
+                        wordToSolve.Text = new string(copyOfWordToSolve);
+                        index = randomWordToSolve.IndexOf(charToReplace, index + 1);
+                    }
+                    introducedCharacters.Add(charToReplace);
+                    correctCharactersListBox_game.Items.Add(charToReplace);
                 }
-                correctCharactersListBox_game.Items.Add(charToReplace+", ");
+                else
+                {
+                    introducedCharacters.Add(charToReplace);
+                    wrongCharactersListBox_game.Items.Add(charToReplace);
+                }
             }
             else
             {
-                wrongCharactersListBox_game.Items.Add(charToReplace + ", ");
+                MessageBox.Show("Ja has introduit aquesta lletra!");
             }
         }
 
