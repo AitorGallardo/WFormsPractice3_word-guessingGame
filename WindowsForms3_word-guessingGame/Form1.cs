@@ -98,11 +98,13 @@ namespace WindowsForms3_word_guessingGame
                     }
                     introducedCharacters.Add(charToReplace);
                     correctCharactersListBox_game.Items.Add(charToReplace);
+                    resultCorrectLabel_game.Text = (Convert.ToInt32(resultCorrectLabel_game.Text)+1).ToString();
                 }
                 else
                 {
                     introducedCharacters.Add(charToReplace);
                     wrongCharactersListBox_game.Items.Add(charToReplace);
+                    resultWrongLabel_game.Text = (Convert.ToInt32(resultWrongLabel_game.Text) + 1).ToString();
                 }
             }
             else

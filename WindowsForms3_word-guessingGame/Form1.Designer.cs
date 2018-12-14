@@ -41,15 +41,19 @@
             this.simpleLabel = new System.Windows.Forms.Label();
             this.normalsListBox = new System.Windows.Forms.ListBox();
             this.Joc = new System.Windows.Forms.TabPage();
+            this.wrongCharactersListBox_game = new System.Windows.Forms.ListBox();
+            this.correctCharactersListBox_game = new System.Windows.Forms.ListBox();
+            this.correctCharactersLabel_game = new System.Windows.Forms.Label();
+            this.wrongCharactersLabel_game = new System.Windows.Forms.Label();
             this.hangPictureBox = new System.Windows.Forms.PictureBox();
             this.userInputTxtBox = new System.Windows.Forms.TextBox();
             this.wordToSolve = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordTxtBox = new System.Windows.Forms.TextBox();
-            this.wrongCharactersLabel_game = new System.Windows.Forms.Label();
-            this.correctCharactersLabel_game = new System.Windows.Forms.Label();
-            this.correctCharactersListBox_game = new System.Windows.Forms.ListBox();
-            this.wrongCharactersListBox_game = new System.Windows.Forms.ListBox();
+            this.totalWrongLabel_game = new System.Windows.Forms.Label();
+            this.totalCorrectLabel_game = new System.Windows.Forms.Label();
+            this.resultCorrectLabel_game = new System.Windows.Forms.Label();
+            this.resultWrongLabel_game = new System.Windows.Forms.Label();
             this.tabControlGame.SuspendLayout();
             this.Configuracio.SuspendLayout();
             this.Joc.SuspendLayout();
@@ -209,6 +213,10 @@
             // 
             // Joc
             // 
+            this.Joc.Controls.Add(this.resultWrongLabel_game);
+            this.Joc.Controls.Add(this.resultCorrectLabel_game);
+            this.Joc.Controls.Add(this.totalCorrectLabel_game);
+            this.Joc.Controls.Add(this.totalWrongLabel_game);
             this.Joc.Controls.Add(this.wrongCharactersListBox_game);
             this.Joc.Controls.Add(this.correctCharactersListBox_game);
             this.Joc.Controls.Add(this.correctCharactersLabel_game);
@@ -227,6 +235,42 @@
             this.Joc.TabIndex = 1;
             this.Joc.Text = "Joc";
             this.Joc.UseVisualStyleBackColor = true;
+            // 
+            // wrongCharactersListBox_game
+            // 
+            this.wrongCharactersListBox_game.FormattingEnabled = true;
+            this.wrongCharactersListBox_game.ItemHeight = 20;
+            this.wrongCharactersListBox_game.Location = new System.Drawing.Point(560, 275);
+            this.wrongCharactersListBox_game.Name = "wrongCharactersListBox_game";
+            this.wrongCharactersListBox_game.Size = new System.Drawing.Size(120, 84);
+            this.wrongCharactersListBox_game.TabIndex = 17;
+            // 
+            // correctCharactersListBox_game
+            // 
+            this.correctCharactersListBox_game.FormattingEnabled = true;
+            this.correctCharactersListBox_game.ItemHeight = 20;
+            this.correctCharactersListBox_game.Location = new System.Drawing.Point(560, 128);
+            this.correctCharactersListBox_game.Name = "correctCharactersListBox_game";
+            this.correctCharactersListBox_game.Size = new System.Drawing.Size(120, 84);
+            this.correctCharactersListBox_game.TabIndex = 16;
+            // 
+            // correctCharactersLabel_game
+            // 
+            this.correctCharactersLabel_game.AutoSize = true;
+            this.correctCharactersLabel_game.Location = new System.Drawing.Point(551, 105);
+            this.correctCharactersLabel_game.Name = "correctCharactersLabel_game";
+            this.correctCharactersLabel_game.Size = new System.Drawing.Size(143, 20);
+            this.correctCharactersLabel_game.TabIndex = 15;
+            this.correctCharactersLabel_game.Text = "Correct Characters";
+            // 
+            // wrongCharactersLabel_game
+            // 
+            this.wrongCharactersLabel_game.AutoSize = true;
+            this.wrongCharactersLabel_game.Location = new System.Drawing.Point(551, 252);
+            this.wrongCharactersLabel_game.Name = "wrongCharactersLabel_game";
+            this.wrongCharactersLabel_game.Size = new System.Drawing.Size(138, 20);
+            this.wrongCharactersLabel_game.TabIndex = 14;
+            this.wrongCharactersLabel_game.Text = "Wrong Characters";
             // 
             // hangPictureBox
             // 
@@ -274,41 +318,45 @@
             this.passwordTxtBox.TabIndex = 2;
             this.passwordTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.allTxtBoxInputs_KeyPress);
             // 
-            // wrongCharactersLabel_game
+            // totalWrongLabel_game
             // 
-            this.wrongCharactersLabel_game.AutoSize = true;
-            this.wrongCharactersLabel_game.Location = new System.Drawing.Point(551, 252);
-            this.wrongCharactersLabel_game.Name = "wrongCharactersLabel_game";
-            this.wrongCharactersLabel_game.Size = new System.Drawing.Size(138, 20);
-            this.wrongCharactersLabel_game.TabIndex = 14;
-            this.wrongCharactersLabel_game.Text = "Wrong Characters";
+            this.totalWrongLabel_game.AutoSize = true;
+            this.totalWrongLabel_game.Enabled = false;
+            this.totalWrongLabel_game.Location = new System.Drawing.Point(604, 362);
+            this.totalWrongLabel_game.Name = "totalWrongLabel_game";
+            this.totalWrongLabel_game.Size = new System.Drawing.Size(63, 20);
+            this.totalWrongLabel_game.TabIndex = 18;
+            this.totalWrongLabel_game.Text = "TOTAL:";
             // 
-            // correctCharactersLabel_game
+            // totalCorrectLabel_game
             // 
-            this.correctCharactersLabel_game.AutoSize = true;
-            this.correctCharactersLabel_game.Location = new System.Drawing.Point(551, 105);
-            this.correctCharactersLabel_game.Name = "correctCharactersLabel_game";
-            this.correctCharactersLabel_game.Size = new System.Drawing.Size(143, 20);
-            this.correctCharactersLabel_game.TabIndex = 15;
-            this.correctCharactersLabel_game.Text = "Correct Characters";
+            this.totalCorrectLabel_game.AutoSize = true;
+            this.totalCorrectLabel_game.Enabled = false;
+            this.totalCorrectLabel_game.Location = new System.Drawing.Point(604, 215);
+            this.totalCorrectLabel_game.Name = "totalCorrectLabel_game";
+            this.totalCorrectLabel_game.Size = new System.Drawing.Size(63, 20);
+            this.totalCorrectLabel_game.TabIndex = 19;
+            this.totalCorrectLabel_game.Text = "TOTAL:";
             // 
-            // correctCharactersListBox_game
+            // resultCorrectLabel_game
             // 
-            this.correctCharactersListBox_game.FormattingEnabled = true;
-            this.correctCharactersListBox_game.ItemHeight = 20;
-            this.correctCharactersListBox_game.Location = new System.Drawing.Point(560, 128);
-            this.correctCharactersListBox_game.Name = "correctCharactersListBox_game";
-            this.correctCharactersListBox_game.Size = new System.Drawing.Size(120, 84);
-            this.correctCharactersListBox_game.TabIndex = 16;
+            this.resultCorrectLabel_game.AutoSize = true;
+            this.resultCorrectLabel_game.Enabled = false;
+            this.resultCorrectLabel_game.Location = new System.Drawing.Point(661, 215);
+            this.resultCorrectLabel_game.Name = "resultCorrectLabel_game";
+            this.resultCorrectLabel_game.Size = new System.Drawing.Size(18, 20);
+            this.resultCorrectLabel_game.TabIndex = 20;
+            this.resultCorrectLabel_game.Text = "0";
             // 
-            // wrongCharactersListBox_game
+            // resultWrongLabel_game
             // 
-            this.wrongCharactersListBox_game.FormattingEnabled = true;
-            this.wrongCharactersListBox_game.ItemHeight = 20;
-            this.wrongCharactersListBox_game.Location = new System.Drawing.Point(560, 275);
-            this.wrongCharactersListBox_game.Name = "wrongCharactersListBox_game";
-            this.wrongCharactersListBox_game.Size = new System.Drawing.Size(120, 84);
-            this.wrongCharactersListBox_game.TabIndex = 17;
+            this.resultWrongLabel_game.AutoSize = true;
+            this.resultWrongLabel_game.Enabled = false;
+            this.resultWrongLabel_game.Location = new System.Drawing.Point(661, 362);
+            this.resultWrongLabel_game.Name = "resultWrongLabel_game";
+            this.resultWrongLabel_game.Size = new System.Drawing.Size(18, 20);
+            this.resultWrongLabel_game.TabIndex = 21;
+            this.resultWrongLabel_game.Text = "0";
             // 
             // Form1
             // 
@@ -352,6 +400,10 @@
         private System.Windows.Forms.ListBox correctCharactersListBox_game;
         private System.Windows.Forms.Label correctCharactersLabel_game;
         private System.Windows.Forms.Label wrongCharactersLabel_game;
+        private System.Windows.Forms.Label resultWrongLabel_game;
+        private System.Windows.Forms.Label resultCorrectLabel_game;
+        private System.Windows.Forms.Label totalCorrectLabel_game;
+        private System.Windows.Forms.Label totalWrongLabel_game;
     }
 }
 
