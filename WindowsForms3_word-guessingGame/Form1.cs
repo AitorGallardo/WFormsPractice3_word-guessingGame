@@ -13,10 +13,8 @@ namespace WindowsForms3_word_guessingGame
 {
     public partial class Form1 : Form
     {
-        // List<String> simpleWords = new List<String>() {"CEC", "CRANC", "DEU", "MES", "FIL", "MEU", "COTXE"};
-        // List<String> normalWords = new List<String>() { "LLAPIS", "RATOLI", "GRIPAU", "MOTOS", "CADIRA", "TAULA", "COTXE" };
-        // List<String> complexWords = new List<String>() { "GRINYOLAR", "ESQUERDAR", "ESBIAXAR", "AXAFLANAR"};
         String correctPassword = "ABCD1234";
+        bool gameRunning = false;
         // Regex
         Regex regexGameInput = new Regex("^[A-Za-z]{1}$");
         Regex regexSimple = new Regex("^[A-Z]{1,5}$");
@@ -40,11 +38,13 @@ namespace WindowsForms3_word_guessingGame
         // GAME
         private void startGame_Click(object sender, EventArgs e)
         {
-            if (word_types_game.SelectedItem != null)
+            if (word_types_game.SelectedItem != null && gameRunning == false)
             {
                 int index = word_types_game.Items.IndexOf(word_types_game.SelectedItem);
                 initGame(index);
                 setCountDown();
+                gameRunning = true;
+
             }
         }
 
@@ -56,7 +56,7 @@ namespace WindowsForms3_word_guessingGame
             int wordToSolveLenght;
 
 
-            switch (listNumber) // falta acabr
+            switch (listNumber) 
             {
                 case 0:
                     maxRandom = simplesListBox.Items.Count;
@@ -70,12 +70,53 @@ namespace WindowsForms3_word_guessingGame
                     break;
                 case 1:
                     maxRandom = normalsListBox.Items.Count;
-                    rand.Next(1, maxRandom);
+                    randomWordToSolve = normalsListBox.Items[rand.Next(1, maxRandom)].ToString();
+                    wordToSolveLenght = randomWordToSolve.Length;
+                    for (int i = 0; i < wordToSolveLenght; i++)
+                    {
+                        wordToSolve.Text += "#";
+                    }
+                    wordToSolve.Visible = true;
+
                     break;
                 case 2:
                     maxRandom = complexesListBox.Items.Count;
-                    rand.Next(1, maxRandom);
+                    randomWordToSolve = complexesListBox.Items[rand.Next(1, maxRandom)].ToString();
+                    wordToSolveLenght = randomWordToSolve.Length;
+                    for (int i = 0; i < wordToSolveLenght; i++)
+                    {
+                        wordToSolve.Text += "#";
+                    }
+                    wordToSolve.Visible = true;
+
                     break;
+            }
+            setComponentsVisibility(true);
+
+
+        }
+
+        private void setComponentsVisibility(bool gameRunnning)
+        {
+            if (gameRunnning)
+            {
+                word_types_game.Visible = false;
+                startGame.Visible = false;
+                hangPictureBox.Visible = true;
+                hangPictureBox.Image = Properties.Resources._0_error;
+                wordToSolve.Visible = true;
+                userInputTxtBox.Visible = true;
+                informationPanel_game.Visible = true;
+            }
+            else
+            {
+                word_types_game.Visible = true;
+                startGame.Visible = true;
+                hangPictureBox.Visible = false;
+                hangPictureBox.Image = Properties.Resources._0_error;
+                wordToSolve.Visible = false;
+                userInputTxtBox.Visible = false;
+                informationPanel_game.Visible = false;
             }
 
         }
@@ -105,11 +146,88 @@ namespace WindowsForms3_word_guessingGame
                     introducedCharacters.Add(charToReplace);
                     wrongCharactersListBox_game.Items.Add(charToReplace);
                     resultWrongLabel_game.Text = (Convert.ToInt32(resultWrongLabel_game.Text) + 1).ToString();
+                    loadErrorsImage(resultWrongLabel_game.Text);
                 }
             }
             else
             {
                 MessageBox.Show("Ja has introduit aquesta lletra!");
+            }
+            checkGameState(); ///// FALTA SETEAR ALGO PARA ACABAR LA PARTIDA
+        }
+
+        private bool checkGameState() // it will check either if we have win or lost
+        {
+            if (wordToSolve.Text.Equals(randomWordToSolve))
+            {
+                MessageBox.Show("Paraula encertada. HAS GUANYAT!!!");
+
+                DialogResult dialogResult = MessageBox.Show("Has Guanyat. Vols tornar a jugar?", "Guanyes!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    resetGame();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // Application.Exit();
+                }
+
+                return true;
+            }
+            else if(resultWrongLabel_game.Text.Equals("6"))
+            {
+                MessageBox.Show("Has realitzat 6 errors. PERDS!!!");
+
+                DialogResult dialogResult = MessageBox.Show("Has Perdut. Vols tornar a jugar?", "Perds!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    resetGame();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                    // Application.Exit();
+                }
+
+                return true;
+            }
+            return false;
+        }
+
+        private void resetGame()
+        {
+            setComponentsVisibility(false);
+            word_types_game.SelectedItem = null; // reset index
+            wordToSolve.Text = "";
+            // reset info panel
+            correctCharactersListBox_game.Items.Clear();
+            resultCorrectLabel_game.Text = "0";
+            wrongCharactersListBox_game.Items.Clear();
+            resultWrongLabel_game.Text = "0";
+        }
+
+        private void loadErrorsImage(String numberOfErrors)
+        {
+            switch (numberOfErrors)
+            {
+                case "1":
+                    hangPictureBox.Image = Properties.Resources._1_error;
+                    break;
+                case "2":
+                    hangPictureBox.Image = Properties.Resources._2_error;
+                    break;
+                case "3":
+                    hangPictureBox.Image = Properties.Resources._3_error;
+                    break;
+                case "4":
+                    hangPictureBox.Image = Properties.Resources._4_error;
+                    break;
+                case "5":
+                    hangPictureBox.Image = Properties.Resources._5_error;
+                    break;
+                case "6":
+                    hangPictureBox.Image = Properties.Resources._6_error;
+                    break;
             }
         }
 
@@ -215,6 +333,7 @@ namespace WindowsForms3_word_guessingGame
                 {
                     txtBx.Text = e.KeyChar.ToString().ToUpper();
                     checkAndReplaceWord(txtBx.Text);
+                    counter = 0;
                     txtBx.Clear();
                 }
 
@@ -233,7 +352,6 @@ namespace WindowsForms3_word_guessingGame
                 }              
             }
         }
-
         private void tabControlGame_SelectedIndexChanged(object sender, EventArgs e)
         {
             
